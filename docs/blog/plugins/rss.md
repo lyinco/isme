@@ -12,8 +12,9 @@ categories:
 
 > 为你的 Zensical 网站添加 RSS 订阅功能
 
-!!! warning "功能状态"
-    RSS 功能目前正在 Zensical 的 Feature Parity 阶段开发中。以下配置基于 Material for MkDocs 的实现，Zensical 的具体配置可能有所不同，请以官方文档为准。
+!!! warning "功能尚未实现"
+    RSS 功能目前在 Zensical 的 [Tier 2 规划列表](https://zensical.org/compatibility/plugins/) 中，**尚未实现**。
+    本文档中的配置暂时无效，请等待官方发布。
 
 ## 什么是 RSS？
 

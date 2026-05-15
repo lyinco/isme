@@ -13,29 +13,28 @@ categories:
 > 使用标签系统组织和分类你的文档内容
 
 !!! info "功能状态"
-    标签功能是 Zensical Feature Parity 的一部分，将作为原生功能提供。
+    标签基础功能已可用（可在文章中添加标签），但**标签列表页（Tag indexes）目前不支持**。
+    官方正在开发中，预计将在未来版本提供。
 
 ## 什么是标签系统？
 
-标签系统允许你为文章添加关键词标签，方便读者按主题浏览内容：
+标签系统允许你为文章添加关键词标签：
 
 - ✅ **内容分类** - 按主题组织文章
-- ✅ **快速导航** - 点击标签查看相关文章
-- ✅ **自动索引** - 自动生成标签页面
+- ✅ **搜索过滤** - 在搜索中按标签过滤
+- ⚠️ **标签列表页** - 自动生成标签页面（开发中）
 
 ## 基本配置
 
-在 `zensical.toml` 中启用标签插件：
+标签功能**无需配置即可使用**。如需自定义标签图标，可以添加：
 
 ```toml
-[project.plugins.tags]
-```
-
-### 配置选项
-
-```toml
-[project.plugins.tags]
-tags_file = "tags.md"        # 标签索引页面
+[project.extra.tags]
+# 为特定标签配置图标
+icons = [
+    { name = "Python", icon = "fontawesome/brands/python" },
+    { name = "JavaScript", icon = "fontawesome/brands/js" },
+]
 ```
 
 ## 使用方法
@@ -60,9 +59,15 @@ tags:
 文章内容...
 ```
 
-### 创建标签索引页面
+### 标签列表页（开发中）
 
-创建 `docs/tags.md` 文件：
+!!! warning "功能尚未实现"
+    自动生成的标签列表页（Tag indexes）目前**不支持**。
+    官方明确标记为 "currently not supported"。
+
+临时解决方案：手动创建标签索引页面
+
+创建 `docs/tags.md` 文件，手动列出所有标签：
 
 ```markdown
 ---
@@ -73,7 +78,14 @@ hide:
 
 # 标签
 
-<!-- 标签列表会自动生成 -->
+## Python
+
+- [Python 装饰器详解](../articles/decorators.md)
+- [Python 异步编程](../articles/async.md)
+
+## JavaScript
+
+- [JavaScript 基础](../articles/js-basics.md)
 ```
 
 ### 在导航中添加标签页
@@ -189,14 +201,15 @@ tags:
 
 ### 标签页面不显示
 
-**问题**：创建了 tags.md 但标签不显示
+**问题**：创建了 tags.md 但标签列表没有自动生成
+
+**原因**：标签列表页（Tag indexes）功能目前**不支持**。
 
 **解决方案**：
 
-1. 确保 `[project.plugins.tags]` 已配置
-2. 检查 `tags_file` 路径是否正确
-3. 确保文章中有 `tags` 字段
-4. 重新构建网站
+1. 手动维护标签列表页
+2. 等待官方实现该功能
+3. 使用搜索功能按标签过滤文章
 
 ### 标签链接 404
 

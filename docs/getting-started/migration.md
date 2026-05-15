@@ -592,7 +592,11 @@ publish = "site"
 PYTHON_VERSION = "3.11"
 ```
 
-#### GitHub Pages 部署
+#### GitHub Pages 部署（旧版方式，不推荐）
+
+!!! warning "旧版方式"
+    以下使用 `peaceiris/actions-gh-pages` 的方式是旧版部署方式。
+    推荐使用官方原生 GitHub Pages 部署（见上方示例）。
 
 ```yaml
 # .github/workflows/deploy.yml
@@ -606,13 +610,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.11
       - run: pip install zensical
       - run: zensical build
-      - uses: peaceiris/actions-gh-pages@v3
+      - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site

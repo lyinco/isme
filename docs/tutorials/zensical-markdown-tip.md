@@ -136,7 +136,7 @@ def greet(name):
 
 ### 高亮特定行
 
-````marrkdown
+````markdown
 ```python hl_lines="2" title="高亮第2行"
 def greet(name):
     print(f"Hello, {name}!")  # 这行被高亮

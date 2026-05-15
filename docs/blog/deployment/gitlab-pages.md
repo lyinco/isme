@@ -32,16 +32,7 @@ GitLab Pages 是 GitLab 提供的免费静态网站托管服务：
 
 ## 配置 GitLab CI
 
-### 第一步：修改输出目录
-
-在 `zensical.toml` 中，将 `site_dir` 设置为 `public`（GitLab Pages 要求）：
-
-```toml
-[project]
-site_dir = "public"
-```
-
-### 第二步：创建 GitLab CI 配置
+### 第一步：创建 GitLab CI 配置
 
 在项目根目录创建 `.gitlab-ci.yml` 文件：
 
@@ -51,13 +42,36 @@ pages:
   image: python:latest
   script:
     - pip install zensical
-    - zensical build --clean # (1)!
+    - zensical build --clean
+  pages:
+    publish: site
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+```
+
+!!! note "新语法说明"
+    官方推荐使用 `pages: publish: site` 新语法，无需修改 `site_dir` 为 `public`。
+    Zensical 默认输出到 `site` 目录，GitLab CI 会自动识别。
+
+### 旧版语法（不推荐）
+
+如果你使用旧版 GitLab CI，可以这样配置：
+
+```yaml
+pages:
+  stage: deploy
+  image: python:latest
+  script:
+    - pip install zensical
+    - zensical build --clean
   artifacts:
     paths:
       - public
   rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
 ```
+
+需要同时在 `zensical.toml` 中设置 `site_dir = "public"`。
 
 !!! note "关于缓存"
     目前，我们不推荐在 CI 系统中使用缓存，因为缓存功能将在我们优化 Zensical 性能时进行修订。
