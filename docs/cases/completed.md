@@ -1,92 +1,13 @@
----
-title: This is lyincai's
-hide:
-#   - navigation
-#   - toc 
-  - footer
-comments: false
----
-
-<center><font class="custom-font ml3">最近动态</font></center>
-
-<style>
-.custom-font {
-    font-size: 31px;
-    color: #757575;
-}
-@media (max-width: 768px) {
-    .custom-font {
-        font-size: 25px;
-    }
-}
-</style>
-
-
-<style>
-.custom-font {
-    font-size: 31px;
-    color: #757575;
-}
-@media (max-width: 768px) {
-    .custom-font {
-        font-size: 25px;
-    }
-}
-</style>
-
 
 <div class="grid cards" markdown>
 
--   :material-rocket-launch:{ .lg .middle } __正在更新中__
+-   :simple-zenn:{ .lg .middle } __三维重建__
 
     ---
     
-    - [x] [keepfit mirror](https://lyincai-keepfit.vercel.app/)  [ongoing]
-    - [x] [图片转铅笔素描画](https://www.modelscope.cn/studios/lyincai/pencilize_image/)  [done]
+    <>
 
-  
-</div>
-
-
-<div class="grid cards" markdown>
-
--   :material-rocket-launch:{ .lg .middle } __已完结__
-
-    ---
-    
-    - [x] PDF乱码字形字体识别
-    - [x] 婴儿颅形识别
-    - [x] 工业缺陷识别软件系统
-    - [x] 智能机器人-人脸登录模块
-    - [x] 口腔扫描仪软件系统
-
-  
-</div>
-
-
-<style>
-@media (max-width: 768px) {
-    .responsive-image { display: none; }
-}
-</style>
-
-
----
-
-## 导航
-
-<div class="grid cards" markdown>
-
--   :simple-zenn:{ .lg .middle } __快速开始__
-
-    ---
-    
-    - [5 分钟快速开始](getting-started/quick-start.md)
-    - [命令行接口 (CLI)](getting-started/cli.md)
-    - [从 MkDocs 迁移](getting-started/migration.md)
-    - [常见问题解答](faq.md)
-
--   :material-book-open:{ .lg .middle } __核心教程__
+-   :material-book-open:{ .lg .middle } __缺陷检测__
 
     ---
     <!-- - [博客系统完全指南](tutorials/blog-tutorial.md) -->
@@ -96,7 +17,7 @@ comments: false
     - [Markdown 扩展](tutorials/markdown-extensions.md)
     - [Markdown 高效写作](tutorials/zensical-markdown-tip.md)
 
--   :material-puzzle:{ .lg .middle } __插件系统(暂未开发)__
+-   :material-puzzle:{ .lg .middle } __PDF乱码字形字体识别__
 
     ---
     
@@ -117,6 +38,15 @@ comments: false
     - [自托管](blog/deployment/self-hosted.md)
 
 </div>
+
+
+## 案例
+
+- [Wcowin 的博客](https://wcowin.work)
+- [Suffine Hub](https://sufine.top/)
+- [Beyond欣's Notes](https://notes.beyondxin.top/index.html)
+- [更多案例](showcase.md)
+- 基于 Mkdocs、Zensical 的主题与站点汇总在：<a href="https://gist.github.com/Wcowin/d36a31b86aec04c203fec1562bb2391b" target="_blank">GitHub Gist</a>(支持评论提交)
 
 
 ---

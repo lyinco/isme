@@ -13,11 +13,11 @@
 
 [project]
 # ===== 基本信息 [Info] =====
-site_name = "Zensical 中文教程"           # 网站名称
-site_url = "https://wcowin.work/Zensical-Chinese-Tutorial/"  # 网站URL（请修改为你的域名）
-site_description = "最详细、最便捷、最前沿的 Zensical 中文教程"  # 网站描述
-site_author = "Wcowin"                           # 网站作者
-copyright = "Copyright &copy; 2025～2026 Wcowin"      # 左下角的版权声明
+site_name = "lyincai's Disk"           # 网站名称
+site_url = "https://lyincai.github.io/"  # 网站URL（请修改为你的域名）
+site_description = "A programmer, desiginer and  a ..."  # 网站描述
+site_author = "lyincai"                           # 网站作者
+copyright = "Copyright &copy; lyincai"      # 左下角的版权声明
 docs_dir = "docs"                                # 文档目录
 site_dir = "site"                                # 生成的网站目录
 use_directory_urls = true                        # 使用目录形式的URL
@@ -50,52 +50,15 @@ extra_css = [
 # ===== 导航配置 [Navigation] =====
 nav = [
     { "主页" = "index.md" },
-    { "快速开始" = [
-        { "5 分钟快速开始" = "getting-started/quick-start.md" },
-        { "命令行接口 (CLI)" = "getting-started/cli.md" },
-        { "从 MkDocs 迁移" = "getting-started/migration.md" },
+    {"案例展示" = [
+        {"自研项目" = "cases/ongoing.md" },
+        {"完结项目" = "cases/completed.md"}
+    ]},
+    { "笔记本" = [
+        {"2026" = "cnews/2026.md"},
+        
     ] },
-    { "核心教程" = [
-        { "zensical.toml 配置详解" = "tutorials/configuration.md" },
-        { "主题定制指南" = "tutorials/theme-customization.md" },
-        { "Markdown 扩展使用" = "tutorials/markdown-extensions.md" },
-        { "图片配置" = "tutorials/images.md" },
-        { "GLightbox 图片灯箱" = "tutorials/glightbox.md" },
-        { "使用 Markdown 高效写作" = "tutorials/zensical-markdown-tip.md" },
-        { "Zensical 博客系统完全指南" = "tutorials/blog-tutorial.md" },
-    ] },
-    # { "插件系统" = [
-    #     { "插件概览" = "blog/plugins/overview.md" },
-    #     { "博客插件详解" = "blog/plugins/blog.md" },
-    #     { "搜索插件配置" = "blog/plugins/search.md" },
-    #     { "标签插件使用" = "blog/plugins/tags.md" },
-    #     { "RSS 插件配置" = "blog/plugins/rss.md" },
-    # ] },
-    { "部署指南" = [
-        { "GitHub Pages 部署（推荐）" = "blog/deployment/github-pages.md" },
-        { "Netlify 部署" = "blog/deployment/netlify.md" },
-        { "EdgeOne Pages 部署" = "blog/deployment/edgeone-pages.md" },
-        { "GitLab Pages 部署" = "blog/deployment/gitlab-pages.md" },
-        { "Cloudflare Pages 部署" = "blog/deployment/cloudflare-pages.md" },
-        { "自托管部署" = "blog/deployment/self-hosted.md" },
-    ] },
-    { "高级主题" = [
-        { "性能优化" = "blog/advanced/performance.md" },
-        { "SEO 优化" = "blog/advanced/seo.md" },
-        { "多语言支持" = "blog/advanced/i18n.md" },
-        { "自定义 404 页面" = "blog/advanced/custom-404.md" },
-        { "自定义字体" = "blog/advanced/custom-fonts.md" },
-        { "添加评论系统" = "blog/advanced/comment-system.md" },
-        { "Cookie 同意表单配置" = "blog/advanced/data-privacy.md" },
-        { "链接与脚注验证" = "blog/advanced/validation.md" },
-        { "GitHub 贡献热力图" = "blog/advanced/github-heatmap.md" },
-        { "GitHub 仓库卡片" = "blog/advanced/github-repo-card.md" },
-    ] },
-    { "常见问题" = "faq.md" },
-    { "案例展示" = "showcase.md" },
-    { "留言板" = "waline.md" },
     { "关于" = "about.md" },
-    { "加入社群" = "https://pic3.zhimg.com/80/v2-5ef3dde831c9d0a41fe35fabb0cb8784_1440w.webp" },
     { "个人博客" = "https://wcowin.work/" },
 ]
 
@@ -199,14 +162,10 @@ icon = "fontawesome/brands/github"
 link = "https://github.com/Wcowin/Zensical-Chinese-Tutorial"
 name = "GitHub"
 
-[[project.extra.social]]
-icon = "fontawesome/brands/telegram"
-link = "https://t.me/Wcowin"
-name = "Telegram"
 
 [[project.extra.social]]
 icon = "fontawesome/regular/envelope"
-link = "mailto:wcowin@qq.com"
+link = "mailto:314088315@qq.com"
 name = "Email"
 
 # ===== Google Analytics =====
