@@ -494,12 +494,6 @@ zensical --version
 - [主题定制指南](../tutorials/theme-customization.md) - 自定义网站外观
 - [GitHub Pages 部署](../blog/deployment/github-pages.md) - 将网站部署到线上
 
-### 遇到问题？
-
-- 查看 [常见问题解答](../faq.md)
-- 访问 [Zensical 官方文档](https://zensical.org/docs/)
-- 发送邮件至 [wcowin@qq.com](mailto:wcowin@qq.com) 提问
-
 ---
 
 **祝你使用愉快！** 🎉

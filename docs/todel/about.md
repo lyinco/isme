@@ -26,8 +26,7 @@ Zensical 的长期规划与愿景以官方为准，建议关注：
 **Wcowin**
 
 - GitHub: [@Wcowin](https://github.com/Wcowin)
-- Email: [wcowin@qq.com](mailto:wcowin@qq.com)
-- Telegram: [@Wcowin](https://t.me/Wcowin)
+- Email: [wcowin@qq.com](mailto:314088315@qq.com)
 
 **jaywhj**
 

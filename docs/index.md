@@ -81,20 +81,20 @@ comments: false
 
     ---
     
-    - [5 分钟快速开始](getting-started/quick-start.md)
-    - [命令行接口 (CLI)](getting-started/cli.md)
-    - [从 MkDocs 迁移](getting-started/migration.md)
-    - [常见问题解答](faq.md)
+    - [5 分钟快速开始](todel/quick-start.md)
+    - [命令行接口 (CLI)](todel/cli.md)
+    - [从 MkDocs 迁移](todel/migration.md)
+    - [常见问题解答](todel/faq.md)
 
 -   :material-book-open:{ .lg .middle } __核心教程__
 
     ---
     <!-- - [博客系统完全指南](tutorials/blog-tutorial.md) -->
 
-    - [zensical.toml 配置详解](tutorials/configuration.md)
-    - [主题配置指南](tutorials/theme-customization.md)
-    - [Markdown 扩展](tutorials/markdown-extensions.md)
-    - [Markdown 高效写作](tutorials/zensical-markdown-tip.md)
+    - [zensical.toml 配置详解](todel/configuration.md)
+    - [主题配置指南](todel/theme-customization.md)
+    - [Markdown 扩展](todel/markdown-extensions.md)
+    - [Markdown 高效写作](todel/zensical-markdown-tip.md)
 
 -   :material-puzzle:{ .lg .middle } __插件系统(暂未开发)__
 
