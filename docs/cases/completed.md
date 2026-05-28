@@ -5,6 +5,10 @@
 
     ---
     <img src="" width="400" />
+
+    
+
+
     
 
 
@@ -13,7 +17,6 @@
 -   :material-book-open:{ .lg .middle } __[小物体三维重建](https://github.com/lyinco/3d_reconstruction)(私库，需邀请才能查看)__
 
     ---
-    <!-- - [博客系统完全指南](tutorials/blog-tutorial.md) -->
     <img src="https://raw.githubusercontent.com/lyinco/pub/main/images/walnut3d-2.jpg" alt="3d_reconstruction" style="width:400px; height: 200px; border-radius: 20px" />
 
 
