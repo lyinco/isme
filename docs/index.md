@@ -71,53 +71,6 @@ comments: false
 </style>
 
 
----
-
-## 导航
-
-<div class="grid cards" markdown>
-
--   :simple-zenn:{ .lg .middle } __快速开始__
-
-    ---
-    
-    - [5 分钟快速开始](todel/quick-start.md)
-    - [命令行接口 (CLI)](todel/cli.md)
-    - [从 MkDocs 迁移](todel/migration.md)
-    - [常见问题解答](todel/faq.md)
-
--   :material-book-open:{ .lg .middle } __核心教程__
-
-    ---
-    <!-- - [博客系统完全指南](tutorials/blog-tutorial.md) -->
-
-    - [zensical.toml 配置详解](todel/configuration.md)
-    - [主题配置指南](todel/theme-customization.md)
-    - [Markdown 扩展](todel/markdown-extensions.md)
-    - [Markdown 高效写作](todel/zensical-markdown-tip.md)
-
--   :material-puzzle:{ .lg .middle } __插件系统(暂未开发)__
-
-    ---
-    
-    - [插件概览](blog/plugins/overview.md)
-    - [博客](blog/plugins/blog.md)
-    - [搜索](blog/plugins/search.md)
-    - [标签](blog/plugins/tags.md)
-    - [RSS](blog/plugins/rss.md)
-
--   :material-rocket:{ .lg .middle } __部署指南__
-
-    ---
-    
-    - [GitHub Pages（推荐）](blog/deployment/github-pages.md)
-    - [Netlify](blog/deployment/netlify.md)
-    - [EdgeOne Pages](blog/deployment/edgeone-pages.md)
-    - [GitLab Pages](blog/deployment/gitlab-pages.md)
-    - [自托管](blog/deployment/self-hosted.md)
-
-</div>
-
 
 ---
 
