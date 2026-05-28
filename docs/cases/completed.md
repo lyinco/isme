@@ -1,17 +1,10 @@
 
 <div class="grid cards" markdown>
 
--   :material-book-open:{ .lg .middle } __[相机标定](私库，需邀请才能查看)__
+-   :material-book-open:{ .lg .middle } __[相机标定](https://github.com/lyinco)(私库，需邀请才能查看)__
 
     ---
-    <img src="" width="400" />
-
-    
-
-
-    
-
-
+    <img src="https://raw.githubusercontent.com/lyinco/pub/main/images/scan.jpg" width="400" style="width:400px; height: 200px; border-radius: 20px" />
 
 
 -   :material-book-open:{ .lg .middle } __[小物体三维重建](https://github.com/lyinco/3d_reconstruction)(私库，需邀请才能查看)__
