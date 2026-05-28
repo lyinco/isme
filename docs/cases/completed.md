@@ -1,55 +1,44 @@
 
 <div class="grid cards" markdown>
 
--   :simple-zenn:{ .lg .middle } __三维重建__
+-   :material-book-open:{ .lg .middle } __[相机标定](私库，需邀请才能查看)__
 
     ---
-    
-    <>
+    <img src="" width="400">
 
--   :material-book-open:{ .lg .middle } __缺陷检测__
+
+-   :material-book-open:{ .lg .middle } __[小物体三维重建](https://github.com/lyinco/3d_reconstruction)(私库，需邀请才能查看)__
 
     ---
     <!-- - [博客系统完全指南](tutorials/blog-tutorial.md) -->
+    <img src="https://raw.githubusercontent.com/lyinco/pub/main/images/walnut3d-2.jpg" alt="3d_reconstruction" style="width:400px; height: 200px; border-radius: 20px" />
 
-    - [zensical.toml 配置详解](tutorials/configuration.md)
-    - [主题配置指南](tutorials/theme-customization.md)
-    - [Markdown 扩展](tutorials/markdown-extensions.md)
-    - [Markdown 高效写作](tutorials/zensical-markdown-tip.md)
 
--   :material-puzzle:{ .lg .middle } __PDF乱码字形字体识别__
+-   :material-book-open:{ .lg .middle } __[缺陷检测](https://github.com/lyinco/defect_detect)(私库，需邀请才能查看)__
 
     ---
-    
-    - [插件概览](blog/plugins/overview.md)
-    - [博客](blog/plugins/blog.md)
-    - [搜索](blog/plugins/search.md)
-    - [标签](blog/plugins/tags.md)
-    - [RSS](blog/plugins/rss.md)
+    <img src="https://raw.githubusercontent.com/lyinco/pub/main/images/fault_detection.png" alt="fault_detection" style="width:400px; height: 200px; border-radius: 20px">
 
--   :material-rocket:{ .lg .middle } __部署指南__
+    
+
+
+-   :material-book-open:{ .lg .middle } __[PDF乱码字形字体识别](https://github.com/lyinco/pdffont_detect)(私库，需邀请才能查看)__
 
     ---
-    
-    - [GitHub Pages（推荐）](blog/deployment/github-pages.md)
-    - [Netlify](blog/deployment/netlify.md)
-    - [EdgeOne Pages](blog/deployment/edgeone-pages.md)
-    - [GitLab Pages](blog/deployment/gitlab-pages.md)
-    - [自托管](blog/deployment/self-hosted.md)
+    <img src="https://raw.githubusercontent.com/lyinco/pub/main/images/pdf-font.jpg" alt="pdf_font" style="width:400px; border-radius: 20px">
+
 
 </div>
 
 
-## 案例
+<!-- ## 案例
+- [小物体三维重建](https://github.com/lyinco/3d_reconstruction)(私库，需邀请才能查看)
+<div>
+<img src="https://raw.githubusercontent.com/lyinco/pub/main/images/walnut3d-2.jpg" alt="3d_reconstruction" style="width:400px; border-radius: 20px">
+</div> 
 
-- [Wcowin 的博客](https://wcowin.work)
-- [Suffine Hub](https://sufine.top/)
-- [Beyond欣's Notes](https://notes.beyondxin.top/index.html)
-- [更多案例](showcase.md)
-- 基于 Mkdocs、Zensical 的主题与站点汇总在：<a href="https://gist.github.com/Wcowin/d36a31b86aec04c203fec1562bb2391b" target="_blank">GitHub Gist</a>(支持评论提交)
-
-
----
+--- 
+-->
 
 <!--
   将所有页面级脚本和元数据统一放置在这里

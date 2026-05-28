@@ -11,6 +11,9 @@
     - mediapipe 
     - 实时检测关键点/自动计数/手势控制
     - <a href="https://lyincai-keepfit.vercel.app/" target="_blank">在线体验</a>
+    <a href="https://lyincai-keepfit.vercel.app/" target="_blank">
+    <img src="https://raw.githubusercontent.com/lyinco/pub/main/images/keepfit.png" alt="keepfit_mirror" style="width:400px; border-radius: 20px">
+    </a>
 
    
 
@@ -23,5 +26,9 @@
     - 图片转铅笔画
     - 参数调节
     - <a href="https://www.modelscope.cn/studios/lyincai/pencilize_image/" target="_blank">在线体验</a>
+    <a href="https://www.modelscope.cn/studios/lyincai/pencilize_image/" target="_blank">
+    <img src="https://raw.githubusercontent.com/lyinco/pub/main/images/pencil.jpg" alt="pencilize" style="width:600px;border-radius: 20px">
+    </a>
+
 
 </div>
