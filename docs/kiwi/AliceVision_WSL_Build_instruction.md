@@ -719,9 +719,14 @@ make aliceVision_featureExtraction_exe -j$(nproc)
 
 
 
+<h3>1.2 主要流程
+</h3>
+
+ Boost  -> FLANN -> COIN-OR -> LZ4 -> Alembic
 
 
-### 1.2 安装系统依赖
+
+### 1.3 安装系统依赖
 
 ```bash
 sudo apt-get update
