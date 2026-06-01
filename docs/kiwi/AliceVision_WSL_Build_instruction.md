@@ -719,6 +719,16 @@ make aliceVision_featureExtraction_exe -j$(nproc)
 
 
 
+```
+2. 编译图片处理模块
+make aliceVision_cameraInit_exe -j$(nproc)
+[100%] Building CXX object src/software/pipeline/CMakeFiles/aliceVision_cameraInit_exe.dir/main_cameraInit.cpp.o
+[100%] Linking CXX executable ../../../Linux-x86_64/aliceVision_cameraInit
+[100%] Built target aliceVision_cameraInit_exe
+```
+
+
+
 <h3>1.2 主要流程
 </h3>
 
