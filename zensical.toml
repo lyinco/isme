@@ -54,10 +54,11 @@ nav = [
         {"自研项目" = "cases/ongoing.md" },
         {"完结项目" = "cases/completed.md"}
     ]},
-    {"kiwi" = [
+    {"wiki" = [
         {"相机标定" = "kiwi/calib.md"},
         {"手眼标定" = "kiwi/hand-eyes-calib.md"},
-        {"图像处理" = "kiwi/opencv.md"}
+        {"图像处理" = "kiwi/opencv.md"},
+        {"人脸识别" = "kiwi/face_detect.md"},
     ]},
     { "笔记本" = [
         {"202605" = "cnews/202605.md"},
