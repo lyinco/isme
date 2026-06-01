@@ -11,7 +11,7 @@
 - C/C++/C#, Python, WPF, Shell, JavaScript/HTML/CSS
 - MySQL/Postgresql, MongoDB, Redis
 - ZeroMQ, RabbitMQ
-- git/tfs
+- git/tfs/svn
 
 
 

@@ -55,6 +55,7 @@ nav = [
         {"完结项目" = "cases/completed.md"}
     ]},
     {"wiki" = [
+        {"AliceVision编译指南"="kiwi/AliceVision_WSL_Build_instruction.md"},
         {"相机标定" = "kiwi/calib.md"},
         {"手眼标定" = "kiwi/hand-eyes-calib.md"},
         {"图像处理" = "kiwi/opencv.md"},
