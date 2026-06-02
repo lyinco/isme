@@ -1,3 +1,7 @@
+
+
+
+
 # AliceVision 编译指南（WSL Ubuntu 22.04）
 
 ## 环境信息
@@ -36,10 +40,10 @@ echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
 cmake --version
 ```
 
-<h3>1.2 安装系统依赖</h3>
+### 1.2 安装系统依赖
 
 ```bash
-sudo apt update sudo apt install -y \  libboost-all-dev \  libflann-dev
+sudo apt update sudo apt install -y \  libboost-all-dev libflann-dev bison
 # 清空缓存文件
 rm -rf CMakeCache.txt CMakeFiles/
 # 1. 重新配置
@@ -58,10 +62,7 @@ make aliceVision_featureExtraction -j$(nproc)
 ```
 
 
-
-<h3>
-    Troubleshotting
-</h3>
+### 1.3 Troubleshotting
 
 ```question
 1. 一直提示找不到Boost
@@ -281,8 +282,13 @@ CMake Error at src/CMakeLists.txt:514 (find_package):
   cmake .. \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr/local
+  cmake .. \
+  -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+  -DCMAKE_BUILD_TYPE=Release
   make -j$(nproc)
     sudo make install
+    
+   
   
   
   
@@ -290,6 +296,10 @@ CMake Error at src/CMakeLists.txt:514 (find_package):
   cmake . \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/usr/local
+ 
+ cmake .. \
+  -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+  -DCMAKE_BUILD_TYPE=Release
 
     make -j$(nproc)
     sudo make install
@@ -574,20 +584,112 @@ cmake .. \
    rm -rf ~/git_src/AliceVision/build
 mkdir ~/git_src/AliceVision/build
 cd ~/git_src/AliceVision/build
-  cmake .. \
+cmake .. \
   -DCMAKE_BUILD_TYPE=Release \
   -DBUILD_SHARED_LIBS=ON \
-  -DALICEVISION_BUNDLE_DEPENDENCIES=ON \
+  -DALICEVISION_BUNDLE_DEPENDENCIES=OFF \
+  -DALICEVISION_BUILD_DEPENDENCIES=OFF \
   -DALICEVISION_BUILD_SFM=ON \
   -DALICEVISION_USE_OPENCV=ON \
   -DALICEVISION_USE_CCTAG=OFF \
   -DALICEVISION_BUILD_EXAMPLES=OFF \
   -DALIZEVISION_BUILD_TESTS=OFF \
-  -DALICEVISION_USE_CUDA=OFF
-
-
+  -DALICEVISION_USE_CUDA=OFF \
+  -DCMAKE_CXX_STANDARD=17 \
+  -DCMAKE_PREFIX_PATH="/usr;/usr/local" \
+  -DLEMON_FOUND=TRUE \
+  -DLEMON_INCLUDE_DIRS="/usr/local/include" \
+  -DLEMON_LIBRARIES="/usr/local/lib/libemon.a" \
+  -DOpenEXR_ROOT=/usr
+  -DALICEVISION_BUILD_LIDAR=OFF # 关闭激光点云
+  
+  cmake .. \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_SHARED_LIBS=ON \
+  -DALICEVISION_BUILD_DEPENDENCIES=ON \
+  -DALICEVISION_BUILD_SFM=ON \
+  -DALICEVISION_USE_OPENCV=ON \
+  -DALICEVISION_USE_CCTAG=OFF \
+  -DALICEVISION_USE_CUDA=OFF \
+  -DALICEVISION_BUILD_LIDAR=OFF \
+  -DALICEVISION_BUILD_EXAMPLES=OFF \
+  -DALIZEVISION_BUILD_TESTS=OFF \
+  -DCMAKE_CXX_STANDARD=17 \
+  -DLEMON_FOUND=TRUE \
+  -DLEMON_INCLUDE_DIRS="/usr/local/include" \
+  -DLEMON_LIBRARIES="/usr/local/lib/libemon.a" \
+  -DALICEVISION_BUILD_LIDAR=OFF 
+  
+  cmake .. \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_SHARED_LIBS=ON \
+  -DALICEVISION_BUILD_DEPENDENCIES=ON \
+  -DUSE_EXTERNAL_LEMON=ON \
+  -DLEMON_FOUND=TRUE \
+  -DLEMON_INCLUDE_DIR="/usr/local/include" \
+  -DLEMON_LIBRARY="/usr/local/lib/libemon.a" \
+  -DALICEVISION_BUILD_SFM=ON \
+  -DALICEVISION_USE_OPENCV=ON \
+  -DALICEVISION_USE_CCTAG=OFF \
+  -DALICEVISION_USE_CUDA=OFF \
+  -DCMAKE_CXX_STANDARD=17 \
+  -DALICEVISION_BUILD_LIDAR=OFF
+  
+  
+  
+  
+  
+-DAV_USE_AVX=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
 ```
+
+```
+12.安装 git clone https://github.com/ceres-solver/ceres-solver
+wget http://ceres-solver.org/ceres-solver-2.2.0.tar.gz
+tar zxf ceres-solver-2.2.0.tar.gz
+mkdir ceres-bin
+cd ceres-bin
+cmake ../ceres-solver-2.2.0
+make -j3
+make test
+# Optionally install Ceres, it can also be exported using CMake which
+# allows Ceres to be used without requiring installation, see the documentation
+# for the EXPORT_BUILD_DIR option for more information.
+make install
+
+
+安装 cmake ..   -DBoost_ROOT=/usr/local   -DCMAKE_PREFIX_PATH=/usr/local
+需要安装 abslConfig
+CMake Error at CMakeLists.txt:173 (find_package):
+  By not providing "Findabsl.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "absl", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "absl" with any of
+  the following names:
+
+    abslConfig.cmake
+    absl-config.cmake
+
+  Add the installation prefix of "absl" to CMAKE_PREFIX_PATH or set
+  "absl_DIR" to a directory containing one of the above files.  If "absl"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+  
+  ========
+  git clone https://github.com/abseil/abseil-cpp.git
+  cd abseil-cpp
+  mkdir build & cd build
+  cmake .. \
+    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_INSTALL_PREFIX=/usr/local
+  make -j$(nproc)
+sudo make install
+```
+
+
+
+
 
 ![image-20260601175812873](C:\Users\31408\AppData\Roaming\Typora\typora-user-images\image-20260601175812873.png)
 
@@ -707,6 +809,32 @@ make: *** [Makefile:136: all] Error 2
 ```
 
 ```
+编译aliceVision_imageMatching_exe 出错
+编译make aliceVision_imageMatching_exe -j$(nproc)
+出现错误： In file included from /root/git_src/AliceVision/src/aliceVision/dataio/E57Reader.cpp:7: /root/git_src/AliceVision/src/aliceVision/dataio/E57Reader.hpp:13:10: fatal error: E57SimpleData.h: No such file or directory 13 | #include <E57SimpleData.h> | ^~~~~~~~~~~~~~~~~ compilation terminated. make[3]: *** [src/aliceVision/dataio/CMakeFiles/aliceVision_dataio.dir/build.make:163: src/aliceVision/dataio/CMakeFiles/aliceVision_dataio.dir/E57Reader.cpp.o] Error 1 make[3]: *** Waiting for unfinished jobs.... In file included from /root/git_src/AliceVision/src/aliceVision/sfm/bundle/costfunctions/constraint2d.hpp:15, from /root/git_src/AliceVision/src/aliceVision/sfm/bundle/BundleAdjustmentCeres.cpp:12: /root/git_src/AliceVision/src/aliceVision/sfm/bundle/costfunctions/dynamic_cost_function_to_functor.h:41:10: fatal error: ceres/internal/export.h: No such file or directory 41 | #include <ceres/internal/export.h> | ^~~~~~~~~~~~~~~~~~~~~~~~~ compilation terminated.
+
+（1）E57 是 E57 point cloud format，用于 激光点云 描仪数据 MVS 输入，可以关闭
+cmake .. -DALICEVISION_USE_E57=OFF 或 cmake .. -DALICEVISION_USE_LAS=OFF
+
+（2）Ceres 错误（关键问题）
+```
+
+```
+安装AliceVision官方lemon库
+git@github.com:alicevision/lemon.git
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Release
+make -j4
+make install
+
+```
+
+
+
+
+### 1.4 各模块单独编译
+
+
+```
 1. 编译模块 featureExtraction
 root@lyinc:~/git_src/AliceVision/build# make help | grep -i feature
 make aliceVision_featureExtraction_exe -j$(nproc)
@@ -725,6 +853,74 @@ make aliceVision_cameraInit_exe -j$(nproc)
 [100%] Building CXX object src/software/pipeline/CMakeFiles/aliceVision_cameraInit_exe.dir/main_cameraInit.cpp.o
 [100%] Linking CXX executable ../../../Linux-x86_64/aliceVision_cameraInit
 [100%] Built target aliceVision_cameraInit_exe
+```
+
+```
+3. 编译image matching 模块
+make aliceVision_imageMatching_exe -j$(nproc)
+遇到问题：
+[ 70%] Building CXX object src/aliceVision/dataio/CMakeFiles/aliceVision_dataio.dir/E57Reader.cpp.o In file included from /root/git_src/AliceVision/src/aliceVision/dataio/E57Reader.cpp:7: /root/git_src/AliceVision/src/aliceVision/dataio/E57Reader.hpp:13:10: fatal error: E57SimpleData.h: No such file or directory 13 | #include <E57SimpleData.h> | ^~~~~~~~~~~~~~~~~ compilation terminated. make[3]: *** [src/aliceVision/dataio/CMakeFiles/aliceVision_dataio.dir/build.make:163: src/aliceVision/dataio/CMakeFiles/aliceVision_dataio.dir/E57Reader.cpp.o] Error 1 make[3]: *** Waiting for unfinished jobs.... [ 70%] Linking CXX shared library ../../../../Linux-x86_64/libaliceVision_lInftyComputerVision.so /usr/bin/ld: /usr/local/lib/libCoinUtils.a(CoinStructuredModel.cpp.o): warning: relocation against _ZTI13CoinBaseModel' in read-only section .text' /usr/bin/ld: /usr/local/lib/libCoinUtils.a(CoinConflictGraph.cpp.o): relocation R_X86_64_PC32 against symbol _ZTV17CoinConflictGraph' can not be used when making a shared object; recompile with -fPIC /usr/bin/ld: final link failed: bad value collect2: error: ld returned 1 exit status make[3]: *** [src/aliceVision/linearProgramming/lInfinityCV/CMakeFiles/aliceVision_lInftyComputerVision.dir/build.make:115: Linux-x86_64/libaliceVision_lInftyComputerVision.so.3.4] Error 1 make[2]: *** [CMakeFiles/Makefile2:2657: src/aliceVision/linearProgramming/lInfinityCV/CMakeFiles/aliceVision_lInftyComputerVision.dir/all] Error 2 make[2]: *** Waiting for unfinished jobs.... [ 70%] Linking CXX shared library ../../../Linux-x86_64/libaliceVision_voctree.so [ 70%] Built target aliceVision_voctree make[2]: *** [CMakeFiles/Makefile2:2366: src/aliceVision/dataio/CMakeFiles/aliceVision_dataio.dir/all] Error 2 [ 70%] Linking CXX shared library ../../../Linux-x86_64/libaliceVision_sfm_bundle.so [ 70%] Built target aliceVision_sfm_bundle [ 70%] Linking CXX shared library ../../../Linux-x86_64/libaliceVision_matching.so [ 70%] Built target aliceVision_matching make[1]: *** [CMakeFiles/Makefile2:3878: src/software/pipeline/CMakeFiles/aliceVision_imageMatching_exe.dir/rule] Error 2 make: *** [Makefile:871: aliceVision_imageMatching_exe] Error 2
+
+分析：
+开始以为是 E57，将E57关闭后依然出现，细看才发现原来是 libCoinUtils， 才知道：重新编译了Osi 和 Clp，没有重新编译CoinUtils，重新编译CoinUtil后已经到达81%
+[ 81%] Building CXX object src/aliceVision/dataio/CMakeFiles/aliceVision_dataio.dir/VideoFeed.cpp.o In file included from /root/git_src/AliceVision/src/aliceVision/dataio/E57Reader.cpp:7: /root/git_src/AliceVision/src/aliceVision/dataio/E57Reader.hpp:13:10: fatal error: E57SimpleData.h: No such file or directory 13 | #include <E57SimpleData.h> | ^~~~~~~~~~~~~~~~~ compilation terminated. make[3]: *** [src/aliceVision/dataio/CMakeFiles/aliceVision_dataio.dir/build.make:163: src/aliceVision/dataio/CMakeFiles/aliceVision_dataio.dir/E57Reader.cpp.o] Error 1 make[3]: *** Waiting for unfinished jobs.... make[2]: *** [CMakeFiles/Makefile2:2366: src/aliceVision/dataio/CMakeFiles/aliceVision_dataio.dir/all] Error 2 make[2]: *** Waiting for unfinished jobs.... [ 81%] Linking CXX shared library ../../../Linux-x86_64/libaliceVision_matchingImageCollection.so [ 81%] Built target aliceVision_matchingImageCollection make[1]: *** [CMakeFiles/Makefile2:3878: src/software/pipeline/CMakeFiles/aliceVision_imageMatching_exe.dir/rule] Error 2 make: *** [Makefile:871: aliceVision_imageMatching_exe] Error 2
+
+逃不过去，下载E57进行编译
+git clone https://github.com/asmaloney/libE57Format.git
+cmake -B E57-build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=E57-install libE57Format
+cmake --build E57-build --parallel
+cmake --install E57-build
+
+(base) root@lyinc:~/git_src/AliceVision/build# sed -n '1,50p' ~/git_src/AliceVision/src/aliceVision/dataio/CMakeLists.txt
+# Headers
+set(dataio_files_headers
+    FeedProvider.hpp
+    IFeed.hpp
+    ImageFeed.hpp
+    SfMDataFeed.hpp
+    json.hpp
+)
+
+# Sources
+set(dataio_files_sources
+    FeedProvider.cpp
+    IFeed.cpp
+    ImageFeed.cpp
+    SfMDataFeed.cpp
+    json.cpp
+)
+
+if (ALICEVISION_HAVE_OPENCV)
+    list(APPEND dataio_files_headers VideoFeed.hpp)
+    list(APPEND dataio_files_sources VideoFeed.cpp)
+endif()
+
+if (NOT ALICEVISION_BUILD_LIDAR STREQUAL "OFF")
+    list(APPEND dataio_files_headers E57Reader.hpp)
+    list(APPEND dataio_files_sources E57Reader.cpp)
+endif()
+
+alicevision_add_library(aliceVision_dataio
+    SOURCES ${dataio_files_headers} ${dataio_files_sources}
+    PUBLIC_LINKS
+        aliceVision_camera
+        aliceVision_image
+    PRIVATE_LINKS
+        aliceVision_sfmData
+        aliceVision_sfmDataIO
+        aliceVision_system
+        Boost::boost
+        Boost::json
+)
+
+if (ALICEVISION_HAVE_OPENCV)
+    target_link_libraries(aliceVision_dataio PRIVATE ${OpenCV_LIBS})
+endif()
+
+if (NOT ALICEVISION_BUILD_LIDAR STREQUAL "OFF")
+    target_link_libraries(aliceVision_dataio PRIVATE E57Format)
+endif()
+(base) root@lyinc:~/git_src/AliceVision/build#
 ```
 
 
