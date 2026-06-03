@@ -587,7 +587,7 @@ cd ~/git_src/AliceVision/build
 cmake .. \
   -DCMAKE_BUILD_TYPE=Release \
   -DBUILD_SHARED_LIBS=ON \
-  -DALICEVISION_BUNDLE_DEPENDENCIES=OFF \
+  -DALICEVISION_BUNDLE_DEPENDENCIES=ON \
   -DALICEVISION_BUILD_DEPENDENCIES=OFF \
   -DALICEVISION_BUILD_SFM=ON \
   -DALICEVISION_USE_OPENCV=ON \
@@ -620,20 +620,7 @@ cmake .. \
   -DLEMON_LIBRARIES="/usr/local/lib/libemon.a" \
   -DALICEVISION_BUILD_LIDAR=OFF 
   
-  cmake .. \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DBUILD_SHARED_LIBS=ON \
-  -DALICEVISION_BUILD_DEPENDENCIES=ON \
-  -DUSE_EXTERNAL_LEMON=ON \
-  -DLEMON_FOUND=TRUE \
-  -DLEMON_INCLUDE_DIR="/usr/local/include" \
-  -DLEMON_LIBRARY="/usr/local/lib/libemon.a" \
-  -DALICEVISION_BUILD_SFM=ON \
-  -DALICEVISION_USE_OPENCV=ON \
-  -DALICEVISION_USE_CCTAG=OFF \
-  -DALICEVISION_USE_CUDA=OFF \
-  -DCMAKE_CXX_STANDARD=17 \
-  -DALICEVISION_BUILD_LIDAR=OFF
+
   
   
   
@@ -685,6 +672,54 @@ CMake Error at CMakeLists.txt:173 (find_package):
     -DCMAKE_INSTALL_PREFIX=/usr/local
   make -j$(nproc)
 sudo make install
+```
+
+```
+13. 
+[ 64%] Built target osi
+[ 67%] Built target clp
+[ 67%] Performing download step (git clone) for 'LEMON'
+Cloning into 'LEMON'...
+fatal: reference is not a tree: 8885b9a8b7a20cdf5588964fe30da89093ec53cd
+CMake Error at LEMON-tmp/LEMON-gitclone.cmake:61 (message):
+  Failed to checkout tag: '8885b9a8b7a20cdf5588964fe30da89093ec53cd'
+
+
+make[2]: *** [CMakeFiles/LEMON.dir/build.make:98: external/src/LEMON-stamp/LEMON-download] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1111: CMakeFiles/LEMON.dir/all] Error 2
+make: *** [Makefile:136: all] Error 2
+
+因为你刚才重新运行了 cmake .. 命令，这会彻底刷新并抹除我们之前在 build 目录下手动 touch 创建的所有欺骗性时间戳文件。因此，当 make 推进到 67% 的时候，发现 LEMON-download 戳记不见了，就又跑去 Git 仓库下载，从而再次触发了这个死循环报错。
+
+# 1. 重新批量伪造 LEMON 的全套戳记
+mkdir -p ~/git_src/AliceVision/build/external/src/LEMON-stamp
+touch ~/git_src/AliceVision/build/external/src/LEMON-stamp/LEMON-download
+touch ~/git_src/AliceVision/build/external/src/LEMON-stamp/LEMON-update
+touch ~/git_src/AliceVision/build/external/src/LEMON-stamp/LEMON-patch
+touch ~/git_src/AliceVision/build/external/src/LEMON-stamp/LEMON-configure
+touch ~/git_src/AliceVision/build/external/src/LEMON-stamp/LEMON-build
+touch ~/git_src/AliceVision/build/external/src/LEMON-stamp/LEMON-install
+
+# 2. 重新批量伪造 popsift 的全套戳记
+mkdir -p ~/git_src/AliceVision/build/external/src/popsift-stamp
+touch ~/git_src/AliceVision/build/external/src/popsift-stamp/popsift-download
+touch ~/git_src/AliceVision/build/external/src/popsift-stamp/popsift-update
+touch ~/git_src/AliceVision/build/external/src/popsift-stamp/popsift-patch
+touch ~/git_src/AliceVision/build/external/src/popsift-stamp/popsift-configure
+touch ~/git_src/AliceVision/build/external/src/popsift-stamp/popsift-build
+touch ~/git_src/AliceVision/build/external/src/popsift-stamp/popsift-install
+
+# 3. 重新批量伪造 cctag 的全套戳记
+mkdir -p ~/git_src/AliceVision/build/external/src/cctag-stamp
+touch ~/git_src/AliceVision/build/external/src/cctag-stamp/cctag-download
+touch ~/git_src/AliceVision/build/external/src/cctag-stamp/cctag-update
+touch ~/git_src/AliceVision/build/external/src/cctag-stamp/cctag-patch
+touch ~/git_src/AliceVision/build/external/src/cctag-stamp/cctag-configure
+touch ~/git_src/AliceVision/build/external/src/cctag-stamp/cctag-build
+touch ~/git_src/AliceVision/build/external/src/cctag-stamp/cctag-install
+
+# 4. 紧接着立刻启动多核编译（因为刚才已经运行过 cmake 并去除了 nonFree 模块，这里直接编译即可）
+make -j$(nproc)
 ```
 
 
